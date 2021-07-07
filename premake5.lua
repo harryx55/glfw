@@ -3,9 +3,6 @@ project "GLFW"
 	language "C"
 	staticruntime "off"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-intermediate/" .. outputdir .. "/%{prj.name}")
-
 	files
 	{
 		"include/GLFW/glfw3.h",
@@ -67,7 +64,17 @@ project "GLFW"
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
+		targetdir ("Debug/bin/" .. outputdir .. "/%{prj.name}")
+		objdir ("Debug/bin-intermediate/" .. outputdir .. "/%{prj.name}")
 
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"
+		targetdir ("Release/bin/" .. outputdir .. "/%{prj.name}")
+		objdir ("Release/bin-intermediate/" .. outputdir .. "/%{prj.name}")
+
+	filter "configurations:Dist"
+		runtime "Debug"
+		symbols "on"
+		targetdir ("Dist/bin/" .. outputdir .. "/%{prj.name}")
+		objdir ("Dist/bin-intermediate/" .. outputdir .. "/%{prj.name}")
