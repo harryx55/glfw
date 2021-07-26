@@ -1,7 +1,8 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
-	staticruntime "off"
+	cppdialect "c++17"
+	staticruntime "on"
 
 	files
 	{
@@ -17,7 +18,6 @@ project "GLFW"
 	}
 	filter "system:linux"
 		pic "On"
-
 		systemversion "latest"
 		
 		files
@@ -72,9 +72,3 @@ project "GLFW"
 		optimize "on"
 		targetdir ("Release/bin/" .. outputdir .. "/%{prj.name}")
 		objdir ("Release/bin-intermediate/" .. outputdir .. "/%{prj.name}")
-
-	filter "configurations:Dist"
-		runtime "Debug"
-		symbols "on"
-		targetdir ("Dist/bin/" .. outputdir .. "/%{prj.name}")
-		objdir ("Dist/bin-intermediate/" .. outputdir .. "/%{prj.name}")
